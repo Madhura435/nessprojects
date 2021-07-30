@@ -17,15 +17,8 @@ public class EmployeeService {
 	private EmployeeRepository employeeRepositary;
 	
 	public List<Employee> getlistEmployees()
-	{try
 	{
 		return employeeRepositary.findAll();	
-	}
-	catch(RuntimeException e)
-	{
-		throw new ResourceNotFoundException("Employee not found with id ");
-	}
-		
 	}
 
 	public Employee saveEmployee(Employee employee)

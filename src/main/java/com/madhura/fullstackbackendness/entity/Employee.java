@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
-
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
 private long id;
@@ -22,7 +21,5 @@ private String firstName;
 private String lastName;
 @Column(name="email")
 private String emailId;
-
-
 
 }

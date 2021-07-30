@@ -22,7 +22,7 @@ import com.madhura.fullstackbackendness.exception.ResourceNotFoundException;
 import com.madhura.fullstackbackendness.service.EmployeeService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class EmployeeController {
 	
 	@Autowired
