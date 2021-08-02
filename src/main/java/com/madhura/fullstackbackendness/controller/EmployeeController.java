@@ -21,26 +21,38 @@ import com.madhura.fullstackbackendness.entity.Employee;
 import com.madhura.fullstackbackendness.exception.ResourceNotFoundException;
 import com.madhura.fullstackbackendness.service.EmployeeService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/employee")
 public class EmployeeController {
-	
 	@Autowired
 	public EmployeeService employeeService;
-	
-	@GetMapping("/employees")
+	@ApiOperation(value="get list of employees",notes="By giving this url we get the list of employees",
+			response=Employee.class,responseContainer="List")
+	@GetMapping("/getEmployees")
 	public List<Employee> getEmployees()
 	{
 		return employeeService.getlistEmployees();
 	}
-	@PostMapping("/employees")
-	public Employee createEmployee(@RequestBody Employee employee)
+	
+	@ApiOperation(value="create employee in database",notes="provide json object we can create employee",
+			response=Employee.class)
+	@PostMapping("/saveEmployee")
+	public Employee createEmployee(@ApiParam(value="provide json object for craeting employee") 
+	@RequestBody Employee employee)
 	{
 		return employeeService.saveEmployee(employee);
 	}
-	@GetMapping("/employees/{id}")
+	
+	@ApiOperation(value="get Employee by Id",notes="provide the id we get specific employee by Id",
+			response=Employee.class)
+	@GetMapping("/getEmployee/{id}")
 	public ResponseEntity<Employee> getEmployeeById
-	(@PathVariable Long id)
+	(@ApiParam
+			(value="Id value for get employee",required=true) @PathVariable Long id)
 	{
 		Employee empoyeebyid=employeeService.returnEmployeeById(id)
 				.orElseThrow(() ->
@@ -48,8 +60,12 @@ public class EmployeeController {
 		return ResponseEntity.ok(empoyeebyid);
 	}
 	
-	@PutMapping("/employees/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,@RequestBody Employee updateemployee)
+	
+	@ApiOperation(value="update the employee",notes="provide id,json employee object we can update the employee",
+			response=Employee.class)
+	@PutMapping("/updateEmployees/{id}")
+	public ResponseEntity<Employee> updateEmployee(@ApiParam
+			(value="Id value for update employee",required=true) @PathVariable Long id,@ApiParam(value="provide json object for updating employee") @RequestBody Employee updateemployee)
 	{
 		Employee employeebyId=employeeService.returnEmployeeById(id).orElseThrow(() ->new ResourceNotFoundException("Employee not found with id "+id));
 		employeebyId.setFirstName(updateemployee.getFirstName());
@@ -59,8 +75,11 @@ public class EmployeeController {
 		return ResponseEntity.ok(changedEmployee);
 	}
 	
-	@DeleteMapping("/employees/{id}")
-	public ResponseEntity<Map<String,Boolean>> deleteEmployee(@PathVariable long id)
+	
+	@ApiOperation(value="delete employee by Id",notes="provide id we can delete the employee by id")
+	@DeleteMapping("/deleteEmployee/{id}")
+	public ResponseEntity<Map<String,Boolean>> deleteEmployee(@ApiParam
+			(value="Id value for delete employee",required=true) @PathVariable long id)
 	{
 		Employee employee=employeeService.returnEmployeeById(id).orElseThrow(() ->new ResourceNotFoundException("Employee not found with id "+id));
 		employeeService.removeEmployee(id);
