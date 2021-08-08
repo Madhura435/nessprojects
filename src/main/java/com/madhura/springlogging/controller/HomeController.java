@@ -18,6 +18,7 @@ public class HomeController {
 	  logger.error("error log level");
 	  logger.debug("debug log level");
 	  logger.trace("trace log level");
+	  //System.out.println(19/0);
 	  return "you can check logs of this appiliction either in console or log file";
   }
 }

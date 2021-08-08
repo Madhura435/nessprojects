@@ -1,0 +1,12 @@
+08 Aug 2021 - 15:28:13:745 INFO  [http-nio-8000-exec-1] HomeController:16 - [] info log level
+08 Aug 2021 - 15:28:13:747 WARN  [http-nio-8000-exec-1] HomeController:17 - [] warn log level
+08 Aug 2021 - 15:28:13:747 ERROR [http-nio-8000-exec-1] HomeController:18 - [] error log level
+08 Aug 2021 - 15:28:13:748 DEBUG [http-nio-8000-exec-1] HomeController:19 - [] debug log level
+08 Aug 2021 - 15:28:14:688 INFO  [http-nio-8000-exec-2] HomeController:16 - [] info log level
+08 Aug 2021 - 15:28:14:689 WARN  [http-nio-8000-exec-2] HomeController:17 - [] warn log level
+08 Aug 2021 - 15:28:14:690 ERROR [http-nio-8000-exec-2] HomeController:18 - [] error log level
+08 Aug 2021 - 15:28:14:691 DEBUG [http-nio-8000-exec-2] HomeController:19 - [] debug log level
+08 Aug 2021 - 15:29:20:110 INFO  [http-nio-8000-exec-1] HomeController:16 - [] info log level
+08 Aug 2021 - 15:29:20:111 WARN  [http-nio-8000-exec-1] HomeController:17 - [] warn log level
+08 Aug 2021 - 15:29:20:111 ERROR [http-nio-8000-exec-1] HomeController:18 - [] error log level
+08 Aug 2021 - 15:29:20:111 DEBUG [http-nio-8000-exec-1] HomeController:19 - [] debug log level
