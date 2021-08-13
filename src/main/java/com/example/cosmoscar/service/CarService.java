@@ -15,9 +15,9 @@ import com.example.cosmoscar.repository.CarRepository;
 public class CarService {
 	@Autowired
 	private CarRepository carRepository;
-	public void saveCar(Car car)
+	public Car saveCar(Car car)
 	 {
-		carRepository.save(car);
+		return carRepository.save(car);
 	 }
 
 	public Optional<Car> getCarById(String id,String colour)
@@ -34,5 +34,9 @@ public class CarService {
 	{
 		carRepository.deleteById(id,new PartitionKey(colour));
 	}
-
+    
+	public Car alterCar(Car car)
+	 {
+		return carRepository.save(car);
+	 }
 }

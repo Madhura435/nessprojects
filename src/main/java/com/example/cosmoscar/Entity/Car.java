@@ -21,11 +21,11 @@ public class Car {
 	@PartitionKey
 	private String colour;
 	/**
-	 * {
+	{
  "carId":"1",
  "name":"audi",
 "type":"BW",
 "colour":"green"
-	 * }
+}
 	 */
 }
