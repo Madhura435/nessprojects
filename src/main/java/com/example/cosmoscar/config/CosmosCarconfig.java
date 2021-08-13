@@ -12,6 +12,7 @@ import com.microsoft.azure.spring.data.cosmosdb.repository.config.EnableCosmosRe
 @Configuration
 @EnableCosmosRepositories(basePackages= "com.example.cosmoscar.repository")
 public class CosmosCarconfig extends AbstractCosmosConfiguration{
+	
 	@Value("${azure.cosmosdb.uri}")
 	private String uri;
 	
@@ -30,8 +31,11 @@ public class CosmosCarconfig extends AbstractCosmosConfiguration{
 	public CosmosDBConfig getCosmosConfig1()
 	{
 		this.cosmosKeyCredintial=new CosmosKeyCredential(key);
-		CosmosDBConfig cosdbconfig=CosmosDBConfig.builder(uri,this.cosmosKeyCredintial,dbName)
+		
+		CosmosDBConfig cosdbconfig=CosmosDBConfig
+				.builder(uri,this.cosmosKeyCredintial,dbName)
 				.build();
+		
 		return cosdbconfig;
 	}
 }

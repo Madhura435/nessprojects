@@ -12,7 +12,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ExceptionDetails {
-private Date timeStamp;
-private String message;
-private String exceptionUri;
+
+	private Date timeStamp;
+
+	private String message;
+
+	private String exceptionUri;
 }

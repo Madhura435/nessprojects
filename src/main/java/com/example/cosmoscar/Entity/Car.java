@@ -14,10 +14,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Document(collection= "cars")
 public class Car {
+	
 	@Id
 	private String carId;
+
 	private String name;
+	
 	private String type;
+	
 	@PartitionKey
 	private String colour;
 	/**

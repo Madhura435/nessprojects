@@ -30,11 +30,11 @@ public class CarController {
 	@PostMapping("/saveCar")
 	public Car saveCar(@RequestBody Car car)
 	{
-		if(car.getCarId().isEmpty() || car.getName().isEmpty() || car.getType().isEmpty() || 
-				car.getColour().isEmpty())
+		if(car.getCarId().isEmpty() || car.getName().isEmpty() || car.getType().isEmpty() || car.getColour().isEmpty())
 		{
 			throw new NullPointerException("input fields canNot be empty");
 		}
+		
 		return carService.saveCar(car);
 	}
 	
@@ -42,7 +42,8 @@ public class CarController {
 	@GetMapping("/getCar/{id}/colour/{colour}")
 	public Car getCar(@PathVariable String id,@PathVariable String colour)
 	{
-		return carService.getCarById(id,colour).orElseThrow(() ->
+		return carService.getCarById(id,colour)
+				.orElseThrow(() ->
 		new ResourceNotFoundException("car not found with id "+id+"in the partion"+colour));
      }
 	
@@ -53,15 +54,20 @@ public class CarController {
 		return carService.getCars(type);
 	}
 	
+	
 	@PutMapping("/alterCar/{id}/colour/{colour}")
 	public Car alterdCar(@PathVariable String id,@RequestBody Car car,@PathVariable String colour)
 	{
-		Car carById= carService.getCarById(id,colour).orElseThrow(() ->
+		Car carById= carService
+				  .getCarById(id,colour)
+				  .orElseThrow(() ->
 		new ResourceNotFoundException("car not found with id "+id+"in the partion"+colour));
+	
 		carById.setCarId(car.getCarId());
 		carById.setName(car.getName());
 		carById.setType(car.getType());
 		carById.setColour(car.getColour());
+		
 		return carService.saveCar(carById);
 	}
 	
@@ -69,11 +75,15 @@ public class CarController {
 	@DeleteMapping("/delete/{id}/colour/{colour}")
 	public ResponseEntity<Map<String,Boolean>> deleteCar(@PathVariable String id,@PathVariable String colour)
 	{
-		Car carById= carService.getCarById(id,colour).orElseThrow(() ->
+		Car carById= carService
+				.getCarById(id,colour)
+				.orElseThrow(() ->
 		new ResourceNotFoundException("car not found with id "+id+"in the partion"+colour));
+		
 		carService.deleteCar(id,colour);
 		Map<String,Boolean> response=new HashMap();
 		response.put("Deleted car wih id "+id+",partion"+colour,Boolean.TRUE);
+		
 		return ResponseEntity.ok(response);
 	}
 	

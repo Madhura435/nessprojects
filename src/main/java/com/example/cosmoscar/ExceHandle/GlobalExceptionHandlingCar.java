@@ -20,8 +20,10 @@ public class GlobalExceptionHandlingCar extends ResponseEntityExceptionHandler {
 public ResponseEntity<?> ResourceNotFoundHandling
 (ResourceNotFoundException exception,WebRequest request)
 {
-	ExceptionDetails exceptionDetails=new 
-		ExceptionDetails(new Date(),exception.getMessage()+" ,please change your id and colour",request.getDescription(false));
+	ExceptionDetails exceptionDetails=
+			new ExceptionDetails(new Date()
+				,exception.getMessage()+" "+ ",please change your id and colour"
+		        ,request.getDescription(false));
   
 	return new ResponseEntity<>(exceptionDetails,HttpStatus.NOT_FOUND);
 }
@@ -32,7 +34,9 @@ public ResponseEntity<?> WrongInputHandling(NullPointerException exception,WebRe
 {
 	
 	ExceptionDetails exceptionDetails=
-			new ExceptionDetails(new Date(),exception.getMessage()+" ,please provide valid input details",request.getDescription(false));
+			new ExceptionDetails(new Date()
+					,exception.getMessage()+" ,please provide valid input details"
+					,request.getDescription(false));
    
 	return new ResponseEntity<>(exceptionDetails,HttpStatus.NOT_FOUND);
 }
@@ -42,7 +46,9 @@ protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(
 		HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 	
 	ExceptionDetails exceptionDetails=
-			new ExceptionDetails(new Date(),ex.getMessage()+" ,Please change http method type",request.getDescription(false));
+			new ExceptionDetails(new Date()
+					,ex.getMessage()+" ,Please change http method type"
+					,request.getDescription(false));
 	
 	return new ResponseEntity<>(exceptionDetails,HttpStatus.NOT_FOUND);
 }
@@ -53,7 +59,9 @@ public ResponseEntity<?> globlalExceptionhandler(Exception exception,WebRequest 
 {
 	
 	ExceptionDetails exceptionDetails=
-			new ExceptionDetails(new Date(),exception.getMessage()+" ,Something went rong from server we looking on it please wait ",request.getDescription(false));
+			new ExceptionDetails(new Date()
+				,exception.getMessage()+" ,Something went rong from server we looking on it please wait "
+				,request.getDescription(false));
 	
 	return new ResponseEntity<>(exceptionDetails,HttpStatus.INTERNAL_SERVER_ERROR);
 }
