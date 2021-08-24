@@ -1,0 +1,6 @@
+azure:
+  cosmosdb:
+     uri: https://99911a84-0ee0-4-231-b9ee.documents.azure.com:443/
+     key: wfMwvCRI0al5YS9adh5c0BB2iELPyBw4kQvSMSYTMPoTE8jJ1egzpuNjWAIoTbdnfN3OSA2oW7slfGY6Q0xb7A==
+     secondaryKey: cqflSl3EOK0d2ZzjjmlO0WMHWA0UqnZWQKlqNvatjvuR8LORXnS1YqCdFYr0GG7TpZ9vWkL7FD6aZiubRffAvw==
+     database: car

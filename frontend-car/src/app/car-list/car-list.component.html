@@ -1,0 +1,42 @@
+<h1>Car-list</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>s.No</th>
+            <th>CarID</th>
+            <th>CarNumber</th>
+            <th>CarType</th>
+            <th>CarColour</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let car of cars;index as i">
+       
+        <td>       
+           <div class="form-check">
+
+                <input class="form-check-input" type="checkbox" value="" id="GotoUpdate-delete" 
+                name="update_delete" 
+                (change)="update_DeleteCar($event,car)">
+
+                <label class="form-check-label" for="flexCheckDefault">
+                    GotoUpdate&&Delete
+                </label>
+
+            </div> 
+
+        </td>
+            <td>{{i}}</td>
+            <td>{{car.carId}}</td>
+            <td>{{car.carnumber}}</td>
+            <td>{{car.type}}</td>
+            <td>{{car.colour}}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+<button (click)="updateCar()" class="btn btn-info" [disabled]="toggle">Update</button>
+<button (click)="deleteCar()" class="btn btn-danger" 
+    style="margin-left: 10px;" [disabled]="toggle">Delete</button>
